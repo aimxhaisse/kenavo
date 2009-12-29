@@ -1,0 +1,14 @@
+********************************************************************************
+
+Despite its poor design, this application follows MVC's pattern, each file in
+this folder are prefixed with its roles:
+
+   -- Model files are prefixed with "Model"		: ModelEntity.class.php
+   -- View files are prefixed with "View"   		: ViewArticles.php
+   -- Controller files are prexifed with "Control" 	: ControlArticles.php
+
+   -- Models are classes, it's easier to deal with data
+   -- Views are kind-of templates, parsed by the "asciificator"
+   -- Controllers are pure procedural, why would you need object for that?
+
+********************************************************************************

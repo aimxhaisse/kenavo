@@ -1,0 +1,3 @@
+<?php
+
+// Everything has a beginning...
