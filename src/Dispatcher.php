@@ -11,13 +11,15 @@ class				Dispatcher
     
     foreach ($rules as $name => $route)
       {
-	if (RequestHolder::getGet('page') === $name)
+	if (Holder::get('page') === $name)
 	  {
 	    require_once($route['controller']);
 	    return true;
 	  }
       }
-    
+
+    require_once(Holder::get('page'));
+
     return false;
   }
 

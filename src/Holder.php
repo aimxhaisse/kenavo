@@ -1,13 +1,15 @@
 <?php
 
-// This page stores the content of the query, performing (or not)
-// security checks, and coffee
+// This class is a kind of garbage where you can put everything you want!
+// This is also the place where GET/POST query are stored
 
-class				RequestHolder
+class				Holder
 {
-  private static		$get_holder;
+  private static		$holder = array('page'	=> 'src/Control404.php',	// default page
+						);
 
-  // initialize the RequestHolder storing data into internal holders
+  // let's store get request (no need of post or anything else at that moment)
+  // if the key already exists, we don't erase it and we should NEVER (for security reasons)
 
   public static function	init()
   {
@@ -15,19 +17,18 @@ class				RequestHolder
 
     foreach ($_GET as $key => $value)
       {
-	self::$get_holder[$key] = $value;
+	if (isset(self::$holder[$key]) === false)
+	  {
+	    self::$holder[$key] = $value;
+	  }
       }
   }
 
-  // boom boom pow gotta get get
+  // simply returns the associated value
 
-  public static function	getGet($aKey)
+  public static function	get($aKey)
   {
-    if (isset(self::$get_holder[$aKey]) === true)
-      {
-	return self::$get_holder[$aKey];
-      }
-    Common::fatalError("RequestHolder::getGet: unknown key -> " . $aKey);
+    return isset(self::$holder[$aKey]) ? self::$holder[$aKey] : false;
   }
 
 }
