@@ -1,13 +1,13 @@
 <?php
 
 // This page stores the content of the query, performing (or not)
-// security checks or protections
+// security checks, and coffee
 
 class				RequestHolder
 {
   private static		$get_holder;
 
-  // initialize the RequestHolder
+  // initialize the RequestHolder storing data into internal holders
 
   public static function	init()
   {
@@ -27,7 +27,7 @@ class				RequestHolder
       {
 	return self::$get_holder[$aKey];
       }
-    fatal_error("RequestHolder::getGet: unknown key -> " . $aKey);
+    Common::fatalError("RequestHolder::getGet: unknown key -> " . $aKey);
   }
 
 }

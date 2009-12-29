@@ -7,7 +7,7 @@ class				Dispatcher
 
   public static function	dispatch()
   {
-    $rules = parse_ini_file(ROUTING, true) or fatal_error('unable to open routing ini file.');
+    $rules = parse_ini_file(ROUTING, true) or Common::fatalError('unable to open routing ini file.');
     
     foreach ($rules as $name => $route)
       {

@@ -9,5 +9,5 @@ require_once('src/Dispatcher.php');
 
 if (Dispatcher::dispatch() === false)
   {
-    fatal_error('Requested page doesn\'t exists');
+    Common::fatal_error('Requested page doesn\'t exists');
   }
