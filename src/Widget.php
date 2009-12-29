@@ -23,10 +23,18 @@ abstract class			Widget
 
   abstract public function	render();
 
+  // Okay let's create a new Widget, basically, you don't need to tell the width
+  // if there's a parent
+
+  protected function		__construct($aWidth = 0)
+  {
+    $this->width = $aWidth;
+  }
+
   // Simply draws a line of the given pattern, okay okay okay I know could be optimized
   // because there are 2 strlens, AND SO WHAT?!
 
-  public function		renderLine($aPattern)
+  protected function		renderLine($aPattern)
   {
     $rendered_line = $this->borders['left'];
     for ($i = 0; ($i + strlen($aPattern)) <= $this->width; $i += strlen($aPattern))
@@ -41,7 +49,7 @@ abstract class			Widget
   // Settor for borders, assuming aBorder is an array containing strings
   // We also check if we are still inside our parent :)
 
-  public function		setBorders($aBorder)
+  protected function		setBorders($aBorder)
   {
     $old_width = strlen($this->borders['left']) + strlen($this->borders['right']);
 
@@ -87,7 +95,7 @@ abstract class			Widget
 
   // Simple accessor to return Widget's width, without including its borders size
 
-  private function		getWidth()
+  protected function		getWidth()
   {
     return $this->width;
   }
