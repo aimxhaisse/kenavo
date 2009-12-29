@@ -13,14 +13,11 @@ class				Dispatcher
       {
 	if (Holder::get('page') === $name)
 	  {
-	    require_once($route['controller']);
-	    return true;
+	    return $route['controller'];
 	  }
       }
 
-    require_once(Holder::get('page'));
-
-    return false;
+    return Holder::get('page');
   }
 
 }

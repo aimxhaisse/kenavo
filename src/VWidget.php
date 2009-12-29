@@ -15,7 +15,7 @@ class				VWidget extends Widget
   public function		render()
   {
     $result = array();
-    $result[] = $this->renderLine($this->borders['top']);
+    $result[] = $this->renderLine('', $this->borders['top']);
     foreach ($this->children as $widget)
       {
 	$widget_content = $widget->render();
@@ -28,7 +28,7 @@ class				VWidget extends Widget
 	    $result[] = $line;
 	  }	
       }
-    $result[] = $this->renderLine($this->borders['bottom']);
+    $result[] = $this->renderLine('', $this->borders['bottom']);
 
     return $result;
   }

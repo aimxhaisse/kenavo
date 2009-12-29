@@ -14,8 +14,8 @@ abstract class			Widget
   private			$parent = false;
   private			$content = false;
   private			$width = 0;
-  private			$children = array();
-  private			$borders = array('top'		=> '-',
+  protected			$children = array();
+  protected			$borders = array('top'		=> '-',
 						 'left'		=> '|',
 						 'bottom'	=> '-',
 						 'right'	=> '|');
@@ -26,7 +26,7 @@ abstract class			Widget
   // Okay let's create a new Widget, basically, you don't need to tell the width
   // if there's a parent
 
-  protected function		__construct($aWidth = 0)
+  public function		__construct($aWidth = 0)
   {
     $this->width = $aWidth;
   }
@@ -34,15 +34,16 @@ abstract class			Widget
   // Simply draws a line of the given pattern, okay okay okay I know could be optimized
   // because there are 2 strlens, AND SO WHAT?!
 
-  protected function		renderLine($aPattern)
+  protected function		renderLine($aPrefix, $aPattern)
   {
-    $rendered_line = $this->borders['left'];
-    for ($i = 0; ($i + strlen($aPattern)) <= $this->width; $i += strlen($aPattern))
+    $rendered_line = $this->borders['left'] . $aPrefix;
+    for ($i = strlen($aPrefix); ($i + strlen($aPattern)) <= $this->width; $i += strlen($aPattern))
       {
 	$rendered_line .= $aPattern;
       }
     $rendered_line .= substr($aPattern, 0, $this->width - $i);
     $rendered_line .= $this->borders['right'];
+
     return $rendered_line;
   }
 

@@ -8,9 +8,25 @@ class				TextWidget extends Widget
 {
   private			$text;
 
+  public function		__construct($aWidth = 0)
+  {
+    parent::__construct($aWidth);
+    $this->borders = array('top'	=> '',
+			   'left'	=> ' ',
+			   'bottom'	=> '',
+			   'right'	=> ' ');
+  }
+
   public function		render()
   {
-    return array_split($text, $this->getWidth());
+    $result = array();
+    $temp = str_split($this->text, $this->getWidth());
+    foreach ($temp as $line)
+      {
+	$result[] = $this->renderLine($line, ' ');
+      }
+
+    return $result;
   }
 
   public function		setText($aText)
