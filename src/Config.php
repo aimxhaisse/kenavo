@@ -7,9 +7,14 @@
 // -- enable/disable debugs
 define('DEVEL', true);
 
+// -- Admin to contact
+define('ADMIN', 'rannou.sebastien@gmail.com');
+
 // -- folder where articles are stored
 define('ARTICLES', 'data/articles');
 
+// -- ini file which stores routing rules
+define('ROUTING', 'data/routing.ini');
 
 // ==================================================
 // INTERNALS!
