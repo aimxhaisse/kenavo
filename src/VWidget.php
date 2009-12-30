@@ -6,7 +6,9 @@ require_once('Widget.php');
 // V is for Vertical Widget ! Like this one:
 //
 // |--------------|
-// | Content here |
+// | Sub Widget   |
+// | Another one  |
+// | And another !|
 // |--------------|
 //
 //                 (yeah, that's ugly.)
