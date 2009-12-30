@@ -2,20 +2,25 @@
 
 require_once('Widget.php');
 
-// Simple widget that contains text
+// Simple widget that contains text, like this:
+//
+// |----------|
+// | Text     |
+// |----------|
 
 class				TextWidget extends Widget
 {
   private			$text;
 
-  public function		__construct($aWidth = 0)
+  // Simple constructor that take a default text
+
+  public function		__construct($aText = "")
   {
-    parent::__construct($aWidth);
-    $this->borders = array('top'	=> '',
-			   'left'	=> ' ',
-			   'bottom'	=> '',
-			   'right'	=> ' ');
+    $this->text = $aText;
   }
+
+  // Simply returns a splitted array containing the text
+  // to be displayed
 
   public function		render()
   {
@@ -28,6 +33,8 @@ class				TextWidget extends Widget
 
     return $result;
   }
+
+  // We can EVEN change the text after its initialization, that's amazing
 
   public function		setText($aText)
   {

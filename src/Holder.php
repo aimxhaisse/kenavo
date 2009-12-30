@@ -5,7 +5,7 @@
 
 class				Holder
 {
-  private static		$holder = array('page'	=> 'src/Control404.php',	// default page
+  private static		$holder = array('page'	=> 'pages/404/Control404.php',	// default page
 						);
 
   // let's store get request (no need of post or anything else at that moment)

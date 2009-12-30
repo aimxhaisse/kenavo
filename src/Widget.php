@@ -15,21 +15,13 @@ abstract class			Widget
   private			$content = false;
   private			$width = 0;
   protected			$children = array();
-  protected			$borders = array('top'		=> '-',
-						 'left'		=> '|',
-						 'bottom'	=> '-',
-						 'right'	=> '|');
+  protected			$borders = array('top'		=> '',
+						 'left'		=> ' ',
+						 'bottom'	=> '',
+						 'right'	=> ' ');
 
 
   abstract public function	render();
-
-  // Okay let's create a new Widget, basically, you don't need to tell the width
-  // if there's a parent
-
-  public function		__construct($aWidth = 0)
-  {
-    $this->width = $aWidth;
-  }
 
   // Simply draws a line of the given pattern, okay okay okay I know could be optimized
   // because there are 2 strlens, AND SO WHAT?!
@@ -85,7 +77,7 @@ abstract class			Widget
   // Creating a too small error is considered to be a fatal error
   // This is due to a programming mistake, or a too big descendance of children
 
-  private function		setWidth($aWidth)
+  public function		setWidth($aWidth)
   {
     if ($aWidth <= 0)
       {
@@ -96,9 +88,22 @@ abstract class			Widget
 
   // Simple accessor to return Widget's width, without including its borders size
 
-  protected function		getWidth()
+  public function		getWidth()
   {
     return $this->width;
+  }
+
+  // Returns a string representing Widget's content
+
+  public function		__toString()
+  {
+    $array = $this->render();
+    $result = "";
+    foreach ($array as $line)
+      {
+	$result .= $line . "\n";
+      }
+    return $result;
   }
 
   // Register a new children so as to be able to render it once

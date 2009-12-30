@@ -7,14 +7,20 @@
 // -- enable/disable debugs
 define('DEVEL', true);
 
-// -- Admin to contact
+// -- admin to contact
 define('ADMIN', 'rannou.sebastien@gmail.com');
 
 // -- folder where articles are stored
 define('ARTICLES', 'data/articles');
 
 // -- ini file which stores routing rules
-define('ROUTING', 'data/routing.ini');
+define('ROUTING', 'routing.ini');
+
+// -- width of the template (in characteres)
+define('WIDTH', 240);
+
+// -- title of the page
+define('TITLE', "Welcome to MxS' Area");
 
 // ==================================================
 // INTERNALS!
