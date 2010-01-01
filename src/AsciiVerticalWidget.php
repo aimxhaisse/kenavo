@@ -1,7 +1,6 @@
 <?php
 
-require_once('Common.php');
-require_once('Widget.php');
+require_once('src/Widget.php');
 
 // V is for Vertical Widget ! Like this one:
 //
@@ -13,7 +12,7 @@ require_once('Widget.php');
 //
 //                 (yeah, that's ugly.)
 
-class				VWidget extends Widget
+class				AsciiVerticalWidget extends AsciiWidget
 {
 
   // Let's construct that Widget with the following borders
