@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><?php echo TITLE ?></tile>
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
     <pre id="content"><?php echo $app ?></pre>

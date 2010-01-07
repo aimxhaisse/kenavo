@@ -7,7 +7,7 @@ require_once('src/AsciiBaseWidget.php');
 
 abstract class			AsciiWidget extends AsciiBaseWidget
 {
-  abstract public function	render($aWidth);
+  abstract public function	render();
 
   protected			$borders = array('top'		=> '',	// bottom = top = '-', left = right = '|' will give:
 						 'left'		=> '',  // ------------------
@@ -31,7 +31,7 @@ abstract class			AsciiWidget extends AsciiBaseWidget
 
   public function		__construct(AsciiBaseWidget $aParent)
   {
-    $parent = $aParent;
+    $this->parent = $aParent;
   }
 
   // Returns internal width of the widget (what it can actually contain)
@@ -63,6 +63,45 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     return $parentWidth - $addedWidth;
   }
 
+  // Let's render a $line
+
+  private function		renderLine($content, $content_width)
+  {
+    $left = '';
+    $right = '';
+    $middle = '';
+    
+    $left .= Ascii::generatePattern(' ', $this->margins['left']);
+    $left .= $this->borders['left'];
+    $left .= Ascii::generatePattern(' ', $this->paddings['left']);
+
+    $right .= Ascii::generatePattern(' ', $this->paddings['right']);
+    $right .= $this->borders['right'];
+    $right .= Ascii::generatePattern(' ', $this->margins['right']);
+
+    $middle .= substr($content, 0, $content_width);
+    $middle .= Ascii::generatePattern(' ', $content_width - (strlen($middle)));
+
+    return $left . $middle . $right;
+  }
+
+  public function		drawBorder($aPattern, $parent_width)
+  {
+    $left = '';
+    $right = '';
+    $middle = '';
+    
+    $left .= Ascii::generatePattern(' ', $this->margins['left']);
+    $left .= $this->borders['left'];
+
+    $right .= $this->borders['right'];
+    $right .= Ascii::generatePattern(' ', $this->margins['right']);
+
+    $middle .= Ascii::generatePattern($aPattern, $parent_width - strlen($right) - strlen($left));
+
+    return $left . $middle . $right;
+  }
+
   // Returns an array representing each line
   // What we take as parameter is a pre-formatted array, we only need
   // to wrap it with padding, border, and margin
@@ -73,22 +112,24 @@ abstract class			AsciiWidget extends AsciiBaseWidget
   public function		renderContent($aArray)
   {
     $result = array();
+    $parent_width = $this->parent->getWidth();
     $content_width = $this->getWidth();
 
+    // Top
+    for ($i = 0; $i < $this->margins['top']; ++$i)	$result[] = Ascii::generatePattern(' ', $parent_width);
+    if (strlen($this->borders['top']))			$result[] = $this->drawBorder($this->borders['top'], $parent_width);
+    for ($i = 0; $i < $this->paddings['top']; ++$i)	$result[] = $this->renderLine("", $content_width);
+
+    // Content
     foreach ($aArray as $line)
       {
-	$formatted_line = '';
-
-	$formatted_line .= Ascii::generatePattern(' ', $this->margins['left']);
-	$formatted_line .= $this->border['left'];
-	$formatted_line .= Ascii::generatePattern(' ', $this->paddings['left']);
-	$formatted_line .= substr($line, 0, $content_width);
-	$formatted_line .= Ascii::generatePattern(' ', $this->paddings['right']);
-	$formatted_line .= $this->border['right'];
-	$formatted_line .= Ascii::generatePattern(' ', $this->margins['right']);
-
-	$result[] = $formatted_line;
+	$result[] = $this->renderLine($line, $content_width);
       }
+
+    // Bottom
+    for ($i = 0; $i < $this->paddings['bottom']; ++$i)		$result[] = $this->renderLine("", $content_width);
+    if (strlen($this->borders['bottom']))			$result[] = $this->drawBorder($this->borders['top'], $parent_width);
+    for ($i = 0; $i < $this->margins['bottom']; ++$i)		$result[] = Ascii::generatePattern(' ', $parent_width);
 
     return $result;
   }

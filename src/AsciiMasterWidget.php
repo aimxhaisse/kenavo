@@ -8,7 +8,7 @@ require_once('src/AsciiBaseWidget.php');
 // This can be seen as a QtWidget without parent, but to keep
 // the code simple, let's separate this two different things.
 
-class				MasterWidget extends AsciiBaseWidget
+class				AsciiMasterWidget extends AsciiBaseWidget
 {
   private			$width;
   private			$children = array();
@@ -28,7 +28,11 @@ class				MasterWidget extends AsciiBaseWidget
     $result = '';
     foreach ($this->children as $child)
       {
-	$result .= $child->render($this->width);
+	$sub_array = $child->render();
+	foreach ($sub_array as $line)
+	  {
+	    $result .= $line . "\n";
+	  }
       }
     return $result;
   }
@@ -40,9 +44,9 @@ class				MasterWidget extends AsciiBaseWidget
     return $this->width;
   }
 
-  // Let's register a new children
+  // Let's register a new child
 
-  public function		registerChildren(Widget & $aChild)
+  public function		registerChild(AsciiWidget $aChild)
   {
     $this->children[] = $aChild;
   }

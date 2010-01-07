@@ -1,6 +1,6 @@
 <?php
 
-require_once('src/Widget.php');
+require_once('src/AsciiWidget.php');
 
 // V is for Vertical Widget ! Like this one:
 //
@@ -14,15 +14,25 @@ require_once('src/Widget.php');
 
 class				AsciiVerticalWidget extends AsciiWidget
 {
+  private			$children;
 
   // Let's construct that Widget with the following borders
 
-  public function		__construct()
+  public function		__construct(AsciiBaseWidget $parent)
   {
-    $this->borders = array('top'	=> '-',
-			   'left'	=> '|',
-			   'bottom'	=> '-',
-			   'right'	=> '|');
+    parent::__construct($parent);
+
+    $this->borders['top'] =	'-';
+    $this->borders['bottom'] =	'-';
+    $this->borders['left'] =	'|';
+    $this->borders['right'] =	'|';
+  }
+
+  // Register a new children to be rendered by the widget
+
+  public function		addWidget(AsciiWidget $aChild)
+  {
+    $this->children[] = $aChild;
   }
 
   // Main stuff is made here, returns a string representing
@@ -30,23 +40,15 @@ class				AsciiVerticalWidget extends AsciiWidget
 
   public function		render()
   {
+    $width = $this->getWidth();
     $result = array();
-    $result[] = $this->renderLine('', $this->borders['top']);
+
     foreach ($this->children as $widget)
       {
-	$widget_content = $widget->render();
-	foreach ($widget_content as $widget_line)
-	  {
-	    $line = '';
-	    $line .= $this->borders['left'];
-	    $line .= $widget_line;
-	    $line .= $this->borders['right'];
-	    $result[] = $line;
-	  }	
+	$result = array_merge($result, $widget->render());      
       }
-    $result[] = $this->renderLine('', $this->borders['bottom']);
 
-    return $result;
+    return parent::renderContent($result);
   }
 
 }

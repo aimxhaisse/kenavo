@@ -1,11 +1,8 @@
 <?php
 
-require_once('src/VWidget.php');
-require_once('src/TextWidget.php');
+require_once('src/AsciiWidgetText.php');
 
-$app = new VWidget();
-$app->setWidth(80);
+$content = new AsciiWidgetText($app);
+$content->setText("Page not found :'(");
 
-$text = new TextWidget();
-$text->setParent($app);
-$text->setText("Erreur 404");
+$skeleton->addWidget($content);
