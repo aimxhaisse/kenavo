@@ -8,7 +8,7 @@ class				Dispatcher
   public static function	dispatch()
   {
     $rules = parse_ini_file(ROUTING, true) or Common::fatalError('unable to open routing ini file.');
-    
+
     foreach ($rules as $name => $route)
       {
 	if (Holder::get('page') === $name)
@@ -17,7 +17,7 @@ class				Dispatcher
 	  }
       }
 
-    return Holder::get('page');
+    return "src/Page404.php";
   }
 
 }

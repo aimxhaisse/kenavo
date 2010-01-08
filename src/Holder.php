@@ -5,8 +5,7 @@
 
 class				Holder
 {
-  private static		$holder = array('page'	=> 'pages/404/Control404.php',	// default page
-						);
+  private static		$holder = array();
 
   // let's store get request (no need of post or anything else at that moment)
   // if the key already exists, we don't erase it and we should NEVER (for security reasons)
@@ -22,6 +21,11 @@ class				Holder
 	    self::$holder[$key] = $value;
 	  }
       }
+  }
+
+  public static function	set($aKey, $aValue)
+  {
+    self::$holder[$aKey] = $aValue;
   }
 
   // simply returns the associated value

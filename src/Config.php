@@ -20,7 +20,10 @@ define('ROUTING', 'routing.ini');
 define('WIDTH', 240);
 
 // -- title of the page
-define('TITLE', "Welcome to MxS' Area");
+define('TITLE', "Yet Another Dev Blog :-)");
+
+// -- menu pages
+$menu_pages = array('blog' => 'home');
 
 // ==================================================
 // INTERNALS!

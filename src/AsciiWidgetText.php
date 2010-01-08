@@ -6,6 +6,7 @@ require_once('src/Ascii.php');
 class			AsciiWidgetText extends AsciiWidget
 {
   private		$text;
+  private		$uppercase = false;
 
   public function	__construct(AsciiBaseWidget $parent)
   {
@@ -17,15 +18,26 @@ class			AsciiWidgetText extends AsciiWidget
     $this->text .= $aText;
   }
 
+  public function	setUpperCase()
+  {
+    $this->uppercase = true;
+  }
+
   public function	render()
   {
     $result = array();
     $lines = explode("\n", $this->text);
+    $width = $this->getWidth();
 
     foreach ($lines as $line)
       {
-	$result = array_merge(str_split($line, $this->getWidth()), $result);
+	if ($this->uppercase)
+	  {
+	    $line = strtoupper($line);
+	  }
+	$result = array_merge($result, str_split($line, $width));
       }
+
     return parent::renderContent($result);
   }
 }

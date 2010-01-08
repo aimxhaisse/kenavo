@@ -1,7 +1,7 @@
 <?php
 
-require_once('model/Article.class.php');
-require_once('Config.php');
+require_once('src/ModelEntity.php');
+require_once('src/Config.php');
 
 // Here we provide functions to deal with group of entities
 // Basically articles from a blog, images from a gallery, ...
@@ -44,7 +44,7 @@ class				Entities
 	  {
 	    if ($item[0] !== '.')
 	      {
-		$result[$item] = self::retrieveEntities($folder . '/' . $item);
+		$result[$item] = self::retrieveEntities($folder . '/' . $item, basename($folder));
 	      }
 	  }
 	closedir($dh);
@@ -61,9 +61,28 @@ class				Entities
       {
 	while (($item = readdir($dh)) !== false)
 	  {
-	    if (($item = readdir($dh)) !== false)
+	    if ($item[0] !== '.')
 	      {
-		$result[$item] = new Article($folder . '/' . $item);
+		$result[$item] = new Entity($folder . '/' . $item, basename($folder));
+	      }
+	  }
+	closedir($dh);
+      }
+    return $result;
+  }
+
+  // Returns every grouped entities
+
+  public static function	retrieveGroupedEntities($folder)
+  {
+    $result = array();
+    if (($dh = opendir($folder)) !== false)
+      {
+	while (($item = readdir($dh)) !== false)
+	  {
+	    if ($item[0] !== '.')
+	      {
+		$result = array_merge($result, self::retrieveEntities($folder . '/' . $item));
 	      }
 	  }
 	closedir($dh);

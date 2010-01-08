@@ -20,14 +20,21 @@ class			Entity
   private		$author;
   private		$date;
   private		$path;
+  private		$category;
 
-  public function	__construct($aPath)
+  public function	__construct($aPath, $aCategory)
   {
-    $path = $aPath;
-    $content = false;
-    $title = false;
-    $author = false;
-    $date = false;
+    $this->path = $aPath;
+    $this->content = false;
+    $this->title = false;
+    $this->author = false;
+    $this->date = false;
+    $this->category = $aCategory;
+  }
+
+  public function	getCategory()
+  {
+    return $this->category;
   }
 
   // No need to cache this as this is not heavy
@@ -95,7 +102,7 @@ class			Entity
 
   private function	initDate()
   {
-    $this->date = date("F d Y H:i:s", fileatime($this->path));
+    $this->date = date("F d Y H:i:s", filemtime($this->path));
   }
 
   // Generates file's content to be rendered

@@ -63,6 +63,11 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     return $parentWidth - $addedWidth;
   }
 
+  public function		setBorders($array)
+  {
+    $this->borders = array_merge($this->borders, $array);
+  }
+
   // Let's render a $line
 
   private function		renderLine($content, $content_width)
@@ -128,7 +133,7 @@ abstract class			AsciiWidget extends AsciiBaseWidget
 
     // Bottom
     for ($i = 0; $i < $this->paddings['bottom']; ++$i)		$result[] = $this->renderLine("", $content_width);
-    if (strlen($this->borders['bottom']))			$result[] = $this->drawBorder($this->borders['top'], $parent_width);
+    if (strlen($this->borders['bottom']))			$result[] = $this->drawBorder($this->borders['bottom'], $parent_width);
     for ($i = 0; $i < $this->margins['bottom']; ++$i)		$result[] = Ascii::generatePattern(' ', $parent_width);
 
     return $result;

@@ -14,18 +14,13 @@ require_once('src/AsciiWidget.php');
 
 class				AsciiVerticalWidget extends AsciiWidget
 {
-  private			$children;
+  private			$children = array();
 
   // Let's construct that Widget with the following borders
 
   public function		__construct(AsciiBaseWidget $parent)
   {
     parent::__construct($parent);
-
-    $this->borders['top'] =	'-';
-    $this->borders['bottom'] =	'-';
-    $this->borders['left'] =	'|';
-    $this->borders['right'] =	'|';
   }
 
   // Register a new children to be rendered by the widget

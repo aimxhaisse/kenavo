@@ -2,4 +2,37 @@ body
 {
     background-color:			black;
     color:				white;
+    font-family:			courier;
+    text-align:				center;
+}
+
+#corpus
+{
+    margin:				auto;
+    text-align:				justify;
+    width:				560px;
+}
+
+pre
+{
+    margin-top: 0;
+}
+
+#footer, #menu
+{
+    font-size:				12px;
+    text-align:				right;
+    color:				grey;
+    font-family:			courier;
+}
+
+a
+{
+    color:				inherit;
+    text-decoration:			none;
+}
+
+a:hover
+{
+    color:				white;
 }
