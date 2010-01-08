@@ -2,7 +2,7 @@
 
 require_once('src/Ascii.php');
 require_once('src/AsciiMasterWidget.php');
-require_once('src/AsciiVerticalWidget.php');
+require_once('src/AsciiWidgetVertical.php');
 require_once('src/AsciiWidgetFile.php');
 
 class			Title extends AsciiWidgetFile

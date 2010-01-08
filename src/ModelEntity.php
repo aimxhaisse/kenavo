@@ -1,5 +1,7 @@
 <?php
 
+require_once('src/ModelEntityHeader.php');
+
 // Bored of SQL? Let's store everything using filesystem !
 //
 // Why?
@@ -17,19 +19,18 @@ class			Entity
 {
   private		$content;
   private		$title;
-  private		$author;
-  private		$date;
   private		$path;
   private		$category;
+  private		$header;
 
   public function	__construct($aPath, $aCategory)
   {
+    $this->category = $aCategory;
     $this->path = $aPath;
+    $this->header = false;
     $this->content = false;
     $this->title = false;
-    $this->author = false;
-    $this->date = false;
-    $this->category = $aCategory;
+    $this->initialize();
   }
 
   public function	getCategory()
@@ -37,22 +38,14 @@ class			Entity
     return $this->category;
   }
 
-  // No need to cache this as this is not heavy
-
   public function	getTitle()
   {
     return basename($this->path);
   }
 
-  // Cached accessor
-
   public function	getDate()
   {
-    if ($this->date === false)
-      {
-	$this->initDate();
-      }
-    return $this->date;
+    return $this->header->getCreationDate();
   }
 
   public function	getPath()
@@ -60,18 +53,10 @@ class			Entity
     return $this->path;
   }
 
-  // Cached accessor
-
   public function	getAuthor()
   {
-    if ($this->author === false)
-      {
-	$this->initAuthor();
-      }
-    return $this->author;
+    return $this->header->getAuthor();
   }
-
-  // Cached accessor
 
   public function	getContent()
   {
@@ -82,27 +67,34 @@ class			Entity
     return $this->content;
   }
 
-  // Assuming the author is the owner of the file
+  // Generates a "header" file in it doesn't exists
+  // (that means the entity was just created) so as to keep some informations
+  // persistant.
+  // If it already exists, simply uses its informations.
 
-  public function	initAuthor()
+  private function	initialize()
   {
-    $array = posix_getpwuid(fileowner($this->path));
-    if (isset($array['name']))
+    $cache_path = "." . $this->path . ".cache";
+
+    if (!file_exists($cache_path))
       {
-	$this->author = $array['name'];
+
+	$obj = new ModelEntityHeader();
+
+	$date = date("F d Y H:i:s", filemtime($this->path));
+	$owner = posix_getpwuid(fileowner($this->path));
+
+	$obj->setCreationDate($date);
+	$obj->setAuthor($owner['name']);
+
+	file_put_contents($cache_path, serialize($obj));
+
+	$this->header = $obj;
       }
     else
       {
-	$this->author = "Unknown";
+	$this->header = unserialize(file_get_contents($cache_path));
       }
-  }
-
-  // Generates a string of the date in the following fmt:
-  // December 30 2009 22:16:24
-
-  private function	initDate()
-  {
-    $this->date = date("F d Y H:i:s", filemtime($this->path));
   }
 
   // Generates file's content to be rendered
