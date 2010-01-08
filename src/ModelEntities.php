@@ -49,6 +49,7 @@ class				Entities
 	  }
 	closedir($dh);
       }
+    uasort($result, 'cmpEntities');
     return $result;
   }
 
@@ -63,11 +64,19 @@ class				Entities
 	  {
 	    if ($item[0] !== '.')
 	      {
-		$result[$item] = new Entity($folder . '/' . $item, basename($folder));
+		if (is_dir($folder . '/' . $item))
+		  {
+		    $result = array_merge(self::retrieveEntities($folder . '/' . $item), $result);
+		  }
+		else if (!preg_match("/\.cache$/", $item))
+		  {
+		    $result[$item] = new Entity($folder . '/' . $item, basename($folder));
+		  }
 	      }
 	  }
 	closedir($dh);
       }
+    uasort($result, 'cmpEntities');
     return $result;
   }
 
@@ -87,7 +96,13 @@ class				Entities
 	  }
 	closedir($dh);
       }
+    uasort($result, 'cmpEntities');
     return $result;
   }
 
+}
+
+function	cmpEntities($a, $b)
+{
+  return $a->getTimestamp() < $b->getTimestamp();
 }

@@ -21,13 +21,13 @@ class			Entity
   private		$title;
   private		$path;
   private		$category;
-  private		$header;
+  private		$cache;
 
   public function	__construct($aPath, $aCategory)
   {
     $this->category = $aCategory;
     $this->path = $aPath;
-    $this->header = false;
+    $this->cache = false;
     $this->content = false;
     $this->title = false;
     $this->initialize();
@@ -45,7 +45,12 @@ class			Entity
 
   public function	getDate()
   {
-    return $this->header->getCreationDate();
+    return date("F d Y H:i:s", $this->cache->getCreationDate());
+  }
+
+  public function	getTimestamp()
+  {
+    return $this->cache->getCreationDate();
   }
 
   public function	getPath()
@@ -55,7 +60,7 @@ class			Entity
 
   public function	getAuthor()
   {
-    return $this->header->getAuthor();
+    return $this->cache->getAuthor();
   }
 
   public function	getContent()
@@ -67,21 +72,21 @@ class			Entity
     return $this->content;
   }
 
-  // Generates a "header" file in it doesn't exists
+  // Generates a "cache" file in it doesn't exists
   // (that means the entity was just created) so as to keep some informations
   // persistant.
   // If it already exists, simply uses its informations.
 
   private function	initialize()
   {
-    $cache_path = "." . $this->path . ".cache";
+    $cache_path = $this->path . ".cache";
 
     if (!file_exists($cache_path))
       {
 
 	$obj = new ModelEntityHeader();
 
-	$date = date("F d Y H:i:s", filemtime($this->path));
+	$date = filemtime($this->path);
 	$owner = posix_getpwuid(fileowner($this->path));
 
 	$obj->setCreationDate($date);
@@ -89,11 +94,11 @@ class			Entity
 
 	file_put_contents($cache_path, serialize($obj));
 
-	$this->header = $obj;
+	$this->cache = $obj;
       }
     else
       {
-	$this->header = unserialize(file_get_contents($cache_path));
+	$this->cache = unserialize(file_get_contents($cache_path));
       }
   }
 

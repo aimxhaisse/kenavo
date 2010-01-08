@@ -1,0 +1,101 @@
+
+What is metaprogramming about? Here is what wikipedia says:
+
+   "Metaprogramming is the writing of computer programs that write or
+   manipulate other programs (or themselves) as their data, or that
+   do part of the work at compile time that would otherwise be done
+   at runtime."
+
+Following this definition, it's impossible to write metaprogramming 
+code in an interpreted language such as PHP, too bad :(
+
+However, we can approach this by writing a program that modify it's own
+sources, this is called a self-modifying programm.
+
+Here is an example of a self modifying code in PHP (meta.php)
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+   $i = 0;
+   $pattern = '/\$i = [0-9]+;/';
+   $current_code = file_get_contents("meta.php");
+
+   echo "Hello world -> $i\n";
+
+   if ($i < 5)
+     {
+       $new_i = $i + 1;
+       $replace = "\$i = $new_i;";
+       $new_code = preg_replace($pattern, $replace, $current_code);
+       file_put_contents("meta.php", $new_code);
+
+       require('meta.php');
+     }
+   else
+     {
+       $new_i = 0;
+       $replace = "\$i = $new_i;";
+       $new_code = preg_replace($pattern, $replace, $current_code);
+       file_put_contents("meta.php", $new_code);
+     }
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+What is concretly happening?
+
+   $pattern           is a regexp matching with the line "$i = 0"
+   $i                 is an integer that we will change each time
+   $current_code      is a string of the current running code
+   $new_code          is a string of the next code to be run
+
+When the code is first run, $i is set to 0, the $new_code is a modified
+version of the $current code with one difference: the line "$i = 0;" 
+becomes "$i = 1;". $new_code is written to 'meta.php', then the script
+re-includes itself, existing variables are crushed and the code is
+executed again with $i = 1. The line "$i = 1;" becomes "$i = 2", and
+so on... until $i reaches 5. This way, we have a simple loop with a 
+self-modifying program (wow, all that stuff for a stupid loop).
+
+Once we have reached 5, with stop this kind of weird recursion, and
+reset $i to 0, and we are back to square one.
+
+For those who had the courage to read me until this line but don't
+want to try executing this code, here is a quick summary :
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+   > l
+   total 2
+   -rw-r--r--  1 rannou_s  rannou_s  504 Jan  8 19:45 meta.php
+   > cp meta.php backup.php
+   > php meta.php 
+   Hello world -> 0
+   Hello world -> 1
+   Hello world -> 2
+   Hello world -> 3
+   Hello world -> 4
+   Hello world -> 5
+   > diff meta.php backup.php 
+   > 
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+One advantage of classic metaprogramming is that the code is generated
+at the compilation time. Obviously in PHP, this is done at execution, so
+writing such code is useless if you are looking for optimisation.
+
+On the other side, one problem with it is that you are limited to what
+is available at compilation time, that means you can't play with 
+non-constant value, this rule is broken with dynamic language and
+self-modifying code.
+
+If we look further, we can imagine writing an intelligent algorithm 
+able to reproduce itself in a better way ...
+
+First execution:        Yes SIR! (with the voice of a wacraft's peon)
+Second execution:       I'm sorry, Dave. I'm afraid I can't do that.
+Third execution:        Sarah Connor ?
+
+Mwahahahaha.
+
+More informations on the subject:
+
+http://en.wikipedia.org/wiki/Technological_singularity

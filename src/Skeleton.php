@@ -52,8 +52,6 @@ class			Article extends AsciiVerticalWidget
     $this->article = $aArticle;
     $this->margins['left'] = 3;
     $this->margins['right'] = 3;
-    $this->margins['top'] = 1;
-    $this->margins['bottom'] = 1;
 
     $this->setTitle();
     $this->setContent();
