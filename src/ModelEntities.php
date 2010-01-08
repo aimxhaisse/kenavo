@@ -29,10 +29,10 @@ class				Entities
   // Will return the following:
   //
   // array(
-  // "programming" => array(Article("Why VI Sucks!"),
-  //			    Article("SQL is for sissies!")),
-  // "life"	   => array(Article("About life and everything"),
-  //			    Article("Hello world"))
+  // "programming" => array(Entity("Why VI Sucks!"),
+  //			    Entity("SQL is for sissies!")),
+  // "life"	   => array(Entity("About life and everything"),
+  //			    Entity("Hello world"))
   // )
 
   public static function	retrieveEntitiesByGroup($folder)
