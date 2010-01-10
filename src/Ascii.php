@@ -20,4 +20,22 @@ class				Ascii
     return $result;
   }
 
+  // Returns the length of a string stripping html tags
+
+  public static function	getStrippedSize($content)
+  {
+    $matches = array();
+    preg_match_all("/(<([\w]+)[^>]*>)(.*?)(<\/\\2>)*/", 
+		   $content, $matches, PREG_SET_ORDER);
+    $result = 0;
+    foreach ($matches as $raw_content)
+      {
+	if (isset($matches[2]))
+	  {
+	    $result += strlen($matches[2]);
+	  }
+      }
+    return $result;
+  }
+
 }
