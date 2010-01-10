@@ -53,8 +53,8 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     $parentWidth = $this->parent->getWidth();
 
     $addedWidth = 0;
-    $addedWidth += strlen($this->borders['left']);
-    $addedWidth += strlen($this->borders['right']);
+    $addedWidth += Ascii::getStrippedSize($this->borders['left']);
+    $addedWidth += Ascii::getStrippedSize($this->borders['right']);
     $addedWidth += $this->margins['left'];
     $addedWidth += $this->margins['right'];
     $addedWidth += $this->paddings['left'];
@@ -84,8 +84,8 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     $right .= $this->borders['right'];
     $right .= Ascii::generatePattern(' ', $this->margins['right']);
 
-    $middle .= substr($content, 0, $content_width);
-    $middle .= Ascii::generatePattern(' ', $content_width - (strlen($middle)));
+    $middle .= $content;
+    $middle .= Ascii::generatePattern(' ', $content_width - (Ascii::getStrippedSize($middle)));
 
     return $left . $middle . $right;
   }
@@ -102,7 +102,7 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     $right .= $this->borders['right'];
     $right .= Ascii::generatePattern(' ', $this->margins['right']);
 
-    $middle .= Ascii::generatePattern($aPattern, $parent_width - strlen($right) - strlen($left));
+    $middle .= Ascii::generatePattern($aPattern, $parent_width - Ascii::getStrippedSize($right) - Ascii::getStrippedSize($left));
 
     return $left . $middle . $right;
   }
@@ -122,7 +122,7 @@ abstract class			AsciiWidget extends AsciiBaseWidget
 
     // Top
     for ($i = 0; $i < $this->margins['top']; ++$i)	$result[] = Ascii::generatePattern(' ', $parent_width);
-    if (strlen($this->borders['top']))			$result[] = $this->drawBorder($this->borders['top'], $parent_width);
+    if (Ascii::getStrippedSize($this->borders['top']))	$result[] = $this->drawBorder($this->borders['top'], $parent_width);
     for ($i = 0; $i < $this->paddings['top']; ++$i)	$result[] = $this->renderLine("", $content_width);
 
     // Content
@@ -133,7 +133,7 @@ abstract class			AsciiWidget extends AsciiBaseWidget
 
     // Bottom
     for ($i = 0; $i < $this->paddings['bottom']; ++$i)		$result[] = $this->renderLine("", $content_width);
-    if (strlen($this->borders['bottom']))			$result[] = $this->drawBorder($this->borders['bottom'], $parent_width);
+    if (Ascii::getStrippedSize($this->borders['bottom']))	$result[] = $this->drawBorder($this->borders['bottom'], $parent_width);
     for ($i = 0; $i < $this->margins['bottom']; ++$i)		$result[] = Ascii::generatePattern(' ', $parent_width);
 
     return $result;
