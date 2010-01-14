@@ -35,7 +35,7 @@ class			AsciiWidgetText extends AsciiWidget
 	  {
 	    $line = strtoupper($line);
 	  }
-	$result = array_merge($result, str_split($line, $width));
+	$result[] = $line;
       }
 
     return parent::renderContent($result);

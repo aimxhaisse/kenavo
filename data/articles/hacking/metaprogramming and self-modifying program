@@ -1,10 +1,10 @@
 
 What is <b>metaprogramming</b> about? Here is what wikipedia says:
 
-   "Metaprogramming is the writing of computer programs that write or
-   manipulate other programs (or themselves) as their data, or that
-   do part of the work at compile time that would otherwise be done
-   at runtime."
+   | <i>"Metaprogramming is the writing of computer programs that write or
+   | manipulate other programs (or themselves) as their data, or that
+   | do part of the work at compile time that would otherwise be done
+   | at runtime."</i>
 
 Following this definition, it's impossible to write metaprogramming 
 code in an interpreted language such as PHP, too bad :(
@@ -13,8 +13,8 @@ However, we can approach this by writing a program that modify it's own
 sources, this is called a self-modifying programm.
 
 Here is an example of a self modifying code in PHP (meta.php)
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
+<b>
    $i = 0;
    $pattern = '/\$i = [0-9]+;/';
    $current_code = file_get_contents("meta.php");
@@ -37,15 +37,14 @@ Here is an example of a self modifying code in PHP (meta.php)
        $new_code = preg_replace($pattern, $replace, $current_code);
        file_put_contents("meta.php", $new_code);
      }
-
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+</b>
 
 What is concretly happening?
 
-   $pattern           is a regexp matching with the line "$i = 0"
-   $i                 is an integer that we will change each time
-   $current_code      is a string of the current running code
-   $new_code          is a string of the next code to be run
+   <b>$pattern</b>           is a regexp matching with the line "$i = 0"
+   <b>$i</b>                 is an integer that we will change each time
+   <b>$current_code</b>      is a string of the current running code
+   <b>$new_code</b>          is a string of the next code to be run
 
 When the code is first run, $i is set to 0, the $new_code is a modified
 version of the $current code with one difference: the line "$i = 0;" 
@@ -94,8 +93,6 @@ First execution:        Yes SIR! (with the voice of a wacraft's peon)
 Second execution:       I'm sorry, Dave. I'm afraid I can't do that.
 Third execution:        Sarah Connor ?
 
-Mwahahahaha.
-
 More informations on the subject:
 
-http://en.wikipedia.org/wiki/Technological_singularity
+<a href="http://en.wikipedia.org/wiki/Technological_singularity">Technological singularity</a>

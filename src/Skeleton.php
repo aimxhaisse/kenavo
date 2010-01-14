@@ -60,11 +60,13 @@ class			Article extends AsciiVerticalWidget
   private function	setTitle()
   {
     $ascii = new AsciiWidgetText($this);
+    $ascii->setText('<span class="primary">');
     $ascii->setText($this->article->getCategory() . '/' . $this->article->getTitle() . "\n");
+    $ascii->setText('</span>');
     $ascii->setText('by ' . $this->article->getAuthor());
-    $ascii->setText(' - ' . $this->article->getDate());
-    $ascii->setBorders(array('top' => '-',
-			     'bottom' => '-'));
+    $ascii->setText(', ' . $this->article->getDate());
+    $ascii->setBorders(array('top' => '<span class="secondary">*</span>',
+			     'bottom' => '<span class="secondary">*</span>'));
     $this->addWidget($ascii);
   }
 
@@ -83,10 +85,10 @@ class			Skeleton extends AsciiVerticalWidget
   {
     parent::__construct($aParent);
     $aParent->registerChild($this);
-    $this->borders['left'] = '+';
-    $this->borders['right'] = '+';
-    $this->borders['top'] = '-';
-    $this->borders['bottom'] = '-';
+    $this->borders['left'] = '<span class="secondary">|</span>';
+    $this->borders['right'] = '<span class="secondary">|</span>';
+    $this->borders['top'] = '<span class="secondary">|</span>';
+    $this->borders['bottom'] = '<span class="secondary">|</span>';
     $this->addWidget(new Title($this));
   }
 }

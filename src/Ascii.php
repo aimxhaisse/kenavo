@@ -10,13 +10,12 @@ class				Ascii
 
   public static function	generatePattern($aPattern, $aSize)
   {
-    $len = strlen($aPattern);
+    $len = self::getStrippedSize($aPattern);
     $result = '';
-    for ($i = 0; ($i + $len) < $aSize; $i += $len)
+    for ($i = 0; ($i + $len) <= $aSize; $i += $len)
       {
 	$result .= $aPattern;
       }
-    $result .= substr($aPattern, 0, $aSize - $i);
     return $result;
   }
 

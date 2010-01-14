@@ -3,14 +3,17 @@
   <head>
     <title><?php echo TITLE ?></tile>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="jquery-1.3.2.min.js"></script>
+    <script src="script.js"></script>
   </head>
   <body>
    <div id="corpus">
      <div id="menu">
+       |
        <?php foreach ($menu_pages as $page => $link): ?>
        <a href="index.php?page=<?php echo $link ?>">
 	 <?php echo $page ?>
-       </a>
+       </a>|
        <?php endforeach ?>
      </div>
 

@@ -3,6 +3,7 @@ body
     background-color:			black;
     color:				grey;
     font-family:			courier;
+    font-size:				14px;
     text-align:				center;
 }
 
@@ -10,12 +11,12 @@ body
 {
     margin:				auto;
     text-align:				justify;
-    width:				560px;
+    width:				640px;
 }
 
 pre
 {
-    margin-top: 0;
+    display:				inline;
 }
 
 #footer, #menu
@@ -36,4 +37,19 @@ a
 a:hover
 {
     color:				white;
+}
+
+.primary
+{
+    color:				white;
+}
+
+.title
+{
+    color:				lightgreen;
+}
+
+.secondary
+{
+    color:				#101010;
 }

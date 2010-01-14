@@ -23,7 +23,9 @@ define('WIDTH', 240);
 define('TITLE', "Yet Another Dev Blog :-)");
 
 // -- menu pages
-$menu_pages = array('blog' => 'home');
+$menu_pages = array('blog'	=> 'home',
+		    'about'	=> 'about',
+		    'projects'	=> 'projects');
 
 // ==================================================
 // INTERNALS!
