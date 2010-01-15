@@ -6,8 +6,8 @@ What is <b>metaprogramming</b> about? Here is what wikipedia says:
    | do part of the work at compile time that would otherwise be done
    | at runtime."</i>
 
-Following this definition, it's impossible to write metaprogramming 
-code in an interpreted language such as PHP, too bad :(
+<b>Following this definition, it's impossible to write metaprogramming 
+code in an</b> interpreted language such as PHP, too bad :(
 
 However, we can approach this by writing a program that modify it's own
 sources, this is called a self-modifying programm.
