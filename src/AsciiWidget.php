@@ -93,17 +93,20 @@ abstract class			AsciiWidget extends AsciiBaseWidget
   {
     $cancelled_tags = '';
     $opening_tags = array();
-    $matches = array();
+    $all_matches = array();
 
-    if (preg_match("#<(\w+)(?: \w+=\"\w+\")*>#i", $content, $matches))
+    if (preg_match_all("#<(\w+)(?: \w+=\"\w+\")*>*#i", $content, $all_matches, PREG_SET_ORDER))
       {
-	if (!isset($opening_tags[$matches[1]]))
+	foreach ($all_matches as $matches)
 	  {
-	    $opening_tags[$matches[1]] = array('count' => 0,
-					       'stack' => array());
+	    if (!isset($opening_tags[$matches[1]]))
+	      {
+		$opening_tags[$matches[1]] = array('count' => 0,
+						   'stack' => array());
+	      }
+	    $opening_tags[$matches[1]]['count']++;
+	    $opening_tags[$matches[1]]['stack'][] = $matches[0];
 	  }
-	$opening_tags[$matches[1]]['count']++;
-	$opening_tags[$matches[1]]['stack'][] = $matches[0];
       }
 
     foreach ($opening_tags as $name => $tag)

@@ -1,10 +1,10 @@
 
-What is <b>metaprogramming</b> about? Here is what wikipedia says:
+<b>What is <b>metaprogramming</b> about? Here is what wikipedia says:
 
    | <i>"Metaprogramming is the writing of computer programs that write or
    | manipulate other programs (or themselves) as their data, or that
    | do part of the work at compile time that would otherwise be done
-   | at runtime."</i>
+   | at runtime."</i></b>
 
 <b>Following this definition, it's impossible to write metaprogramming 
 code in an</b> interpreted language such as PHP, too bad :(
@@ -74,7 +74,7 @@ want to try executing this code, here is a quick summary :
    Hello world -> 4
    Hello world -> 5
    > diff meta.php backup.php 
-   > 
+   > <span class="blinking"> </span>
 
 </span>
 

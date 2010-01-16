@@ -11,7 +11,7 @@ var	blinkingFx = function () {
     }
 
     var	blinkOff = function () {
-	jQuery('.blinking').css('background-color', 'black');
+	jQuery('.blinking').css('background-color', 'inherit');
     }
 
     var	blinkSwitcher = function () {
