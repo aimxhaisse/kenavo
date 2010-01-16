@@ -105,6 +105,7 @@ abstract class			AsciiWidget extends AsciiBaseWidget
 	$opening_tags[$matches[1]]['count']++;
 	$opening_tags[$matches[1]]['stack'][] = $matches[0];
       }
+
     foreach ($opening_tags as $name => $tag)
       {
 	$closing_tag = '</' . $name . '>';
@@ -115,12 +116,17 @@ abstract class			AsciiWidget extends AsciiBaseWidget
 	    $cancelled_tags .= $tag['stack'][$tag['count'] - $i - 1];
 	  }
       }
+
     return $cancelled_tags;
   }
 
   // Let's render a $line
+  // Content is the line to be rendered
+  // Content_width is the maximum displayed length of the content
+  // Prefix is what we need to add at beginning of the next line to be rendered
+  // Previous is the previous value of prefix, used to add additionnal opening tags at start
 
-  private function		renderLine($content, $content_width, &$prefix)
+  private function		renderLine($content, $content_width, &$prefix, $previous = '')
   {
     $left = '';
     $right = '';
@@ -134,10 +140,10 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     $right .= $this->borders['right'];
     $right .= Ascii::generatePattern(' ', $this->margins['right']);
 
+    $content = $previous . $content;
+    $prefix = $this->cleanMultilineTags($content);
     $middle .= $content;
     $middle .= Ascii::generatePattern(' ', $content_width - (Ascii::getStrippedSize($middle)));
-
-    $prefix = $this->cleanMultilineTags($content);
 
     return $left . $middle . $right;
   }
@@ -180,13 +186,15 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     for ($i = 0; $i < $this->paddings['top']; ++$i)	$result[] = $this->renderLine("", $content_width, $prefix);
 
     $prefix = '';
+    $backup = '';
 
     // Content
     foreach ($aArray as $line)
       {
+	$debug = $this->renderLine($line, $content_width, $prefix, $backup);
+	// echo "[" . $line . "] -> [" . $debug . "]\n";
+	$result[] = $debug;
 	$backup = $prefix;
-	$subline = $this->renderLine($line, $content_width, $prefix);
-	$result[] = $backup . $subline;
       }
 
     // Bottom
