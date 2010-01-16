@@ -37,8 +37,14 @@ class			AsciiWidgetText extends AsciiWidget
 
 		// Url
 		'url'		=> array('type'			=> BBCODE_TYPE_OPTARG,
-					 'open_tag'=>'<a href="{PARAM}">',
-					 'close_tag'=>'</a>')
+					 'open_tag'		=> '<a href="{PARAM}">',
+					 'close_tag'		=> '</a>'),
+
+		// Colors
+		'color'		=> array('type'			=> BBCODE_TYPE_OPTARG,
+					 'open_tag'		=> '<span style="color:{PARAM};">',
+					 'close_tag'		=> '</span>')
+
 		);
 
     $this->bbcode = bbcode_create($bb);
