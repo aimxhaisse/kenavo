@@ -14,7 +14,7 @@ sources, this is called a self-modifying programm.
 
 Here is an example of a self modifying code in PHP (meta.php)
 
-<b>
+<span class="code">
    $i = 0;
    $pattern = '/\$i = [0-9]+;/';
    $current_code = file_get_contents("meta.php");
@@ -37,7 +37,8 @@ Here is an example of a self modifying code in PHP (meta.php)
        $new_code = preg_replace($pattern, $replace, $current_code);
        file_put_contents("meta.php", $new_code);
      }
-</b>
+
+</span>
 
 What is concretly happening?
 
@@ -59,8 +60,8 @@ reset $i to 0, and we are back to square one.
 
 For those who had the courage to read me until this line but don't
 want to try executing this code, here is a quick summary :
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
+<span class="code">
    > l
    total 2
    -rw-r--r--  1 rannou_s  rannou_s  504 Jan  8 19:45 meta.php
@@ -75,7 +76,7 @@ want to try executing this code, here is a quick summary :
    > diff meta.php backup.php 
    > 
 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+</span>
 
 One advantage of classic metaprogramming is that the code is generated
 at the compilation time. Obviously in PHP, this is done at execution, so

@@ -53,3 +53,9 @@ a:hover
 {
     color:				#101010;
 }
+
+.code
+{
+    color:				lightgreen;
+    background-color:			#101010;
+}

@@ -141,9 +141,10 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     $right .= Ascii::generatePattern(' ', $this->margins['right']);
 
     $content = $previous . $content;
+    $spaces = Ascii::generatePattern(' ', $content_width - (Ascii::getStrippedSize($content)));
+    $content .= $spaces;
     $prefix = $this->cleanMultilineTags($content);
     $middle .= $content;
-    $middle .= Ascii::generatePattern(' ', $content_width - (Ascii::getStrippedSize($middle)));
 
     return $left . $middle . $right;
   }
