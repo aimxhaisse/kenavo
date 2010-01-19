@@ -43,6 +43,17 @@ class			AsciiWidgetText extends AsciiWidget
 		// Colors
 		'color'		=> array('type'			=> BBCODE_TYPE_OPTARG,
 					 'open_tag'		=> '<span style="color:{PARAM};">',
+					 'close_tag'		=> '</span>'),
+
+		// Img
+		'img'		=> array('type'			=> BBCODE_TYPE_OPTARG,
+					 'open_tag'		=> '<img class="floating_image" src="{PARAM}">',
+					 'close_tag'		=> '</img>'),
+		
+
+		// Cursor
+		'cursor'	=> array('type'			=> BBCODE_TYPE_NOARG,
+					 'open_tag'		=> '<span class="blinking">',
 					 'close_tag'		=> '</span>')
 
 		);

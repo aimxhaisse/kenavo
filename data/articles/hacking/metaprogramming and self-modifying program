@@ -42,10 +42,10 @@ Here is an example of a self modifying code in PHP (meta.php)
 
 What is concretly happening?
 
-   [b][color=red]$pattern[/color][/b]           is a regexp matching with the line "$i = 0"
-   [b][color=red]$i[/color][/b]                 is an integer that we will change each time
-   [b][color=red]$current_code[/color][/b]      is a string of the current running code
-   [b][color=red]$new_code[/color][/b]          is a string of the next code to be run
+   [b][color=lightgreen]$pattern[/color][/b]           is a regexp matching with the line "$i = 0"
+   [b][color=lightgreen]$i[/color][/b]                 is an integer that we will change each time
+   [b][color=lightgreen]$current_code[/color][/b]      is a string of the current running code
+   [b][color=lightgreen]$new_code[/color][/b]          is a string of the next code to be run
 
 When the code is first run, $i is set to 0, the $new_code is a modified
 version of the $current code with one difference: the line "$i = 0;" 
@@ -74,9 +74,40 @@ want to try executing this code, here is a quick summary :
    Hello world -> 4
    Hello world -> 5
    > diff meta.php backup.php 
-   > <span class="blinking"> </span>
+   > [cursor] [/cursor]
 
 [/code]
+
+[img=http://smiley.bleu.free.fr/koi/chat-sniper.jpg][/img]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 One advantage of classic metaprogramming is that the code is generated
 at the compilation time. Obviously in PHP, this is done at execution, so

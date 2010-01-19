@@ -2,12 +2,20 @@
 
 require_once('src/ModelEntities.php');
 
+function	PageHome(&$skeleton)
+{
+  $articles = Entities::retrieveGroupedEntities('data/articles');
+  
+  foreach ($articles as $article)
+    {
+      $ascii_article = new Article($skeleton, $article);
+      $skeleton->addWidget($ascii_article);
+    }
+}
 
-$articles = Entities::retrieveGroupedEntities('data/articles');
-
-
-foreach ($articles as $article)
+if (!isset($skeleton))
   {
-    $ascii_article = new Article($skeleton, $article);
-    $skeleton->addWidget($ascii_article);
+    Common::goToHell();
   }
+
+PageHome($skeleton);

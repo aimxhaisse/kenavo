@@ -17,10 +17,10 @@
        <?php endforeach ?>
      </div>
 
-<!-- ASCII -->
+<!-- ASCII CONTENT -->
 <pre id="content">
 <?php echo $app ?></pre>
-<!-- /ASCII -->
+<!-- /ASCII CONTENT -->
 
      <pre id="footer">page generated in <?php echo microtime() - $time ?> seconds</pre>
    </div>

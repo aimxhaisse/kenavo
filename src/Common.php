@@ -19,4 +19,12 @@ class				Common
     die();
   }
 
+  // This is called when the user tries to make something wrong
+
+  public static function	goToHell()
+  {
+    header('location: index.php');
+    exit;
+  }
+
 }
