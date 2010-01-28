@@ -31,6 +31,8 @@
     <input id="search_input" type="text" name="pattern" />    
   </form>
 
+   <?php include('src/SideCategories.php'); ?>
+
 </div>
 
      <pre id="footer">page generated in <?php echo microtime() - $time ?> seconds</pre>

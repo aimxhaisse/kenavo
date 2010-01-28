@@ -55,9 +55,10 @@ class				Entities
 
   // Returns a list of entities from a folder
 
-  public static function	retrieveEntities($folder)
+  public static function	retrieveEntities($folder, $limit = false)
   {
     $result = array();
+
     if (($dh = opendir($folder)) !== false)
       {
 	while (($item = readdir($dh)) !== false)
@@ -66,11 +67,16 @@ class				Entities
 	      {
 		if (is_dir($folder . '/' . $item))
 		  {
-		    $result = array_merge(self::retrieveEntities($folder . '/' . $item), $result);
+		    $result = array_merge(self::retrieveEntities($folder . '/' . $item, $limit), $result);
 		  }
 		else if (!preg_match("/\.cache$/", $item))
 		  {
 		    $result[$item] = new Entity($folder . '/' . $item, basename($folder));
+		  }
+		if (false !== $limit && count($result) >= $limit)
+		  {
+		    $result = array_slice($result, 0, $limit);
+		    break;
 		  }
 	      }
 	  }
@@ -129,6 +135,26 @@ class				Entities
 	return new Entity($existing_pages[$token]['path'], $existing_pages[$token]['category']);
       }
     return false;
+  }
+
+  // Returns an array of available categories
+
+  public static function	retrieveCategories()
+  {
+    $result = array();
+
+    if (($dir = opendir(ARTICLES)) !== false)
+      {
+	while (($item = readdir($dir)) !== false)
+	  {
+	    if ($item != "." && $item != ".." && is_dir(ARTICLES . '/' . $item))
+	      {
+		$result[] = $item;
+	      }
+	  }
+	closedir($dir);
+      }
+    return $result;
   }
   
 }

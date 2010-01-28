@@ -111,3 +111,15 @@ a:hover
 {
     position:				absolute;
 }
+
+#sidebar h2
+{
+    font-size:				18px;
+    color:				#FFFFFF;
+}
+
+#sidebar h3
+{
+    font-size:				12px;
+    font-weight:			normal;
+}

@@ -78,37 +78,6 @@ want to try executing this code, here is a quick summary :
 
 [/code]
 
-[img=http://smiley.bleu.free.fr/koi/chat-sniper.jpg][/img]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 One advantage of classic metaprogramming is that the code is generated
 at the compilation time. Obviously in PHP, this is done at execution, so
 writing such code is useless if you are looking for optimisation.
