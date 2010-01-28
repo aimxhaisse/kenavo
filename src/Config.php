@@ -22,6 +22,12 @@ define('WIDTH', 240);
 // -- title of the page
 define('TITLE', "Yet Another Dev Blog :-)");
 
+// -- directory where to store serialized content
+define('SERIALIZED', 'data/serialized');
+
+// -- contains serialized pages
+define('SERIALIZED_ROUTES', SERIALIZED . '/pages');
+
 // -- menu pages
 $menu_pages = array('blog'	=> 'home',
 		    'about'	=> 'about',

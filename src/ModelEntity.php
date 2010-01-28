@@ -22,6 +22,7 @@ class			Entity
   private		$path;
   private		$category;
   private		$cache;
+  private		$token;
 
   public function	__construct($aPath, $aCategory)
   {
@@ -30,7 +31,13 @@ class			Entity
     $this->cache = false;
     $this->content = false;
     $this->title = false;
+    $this->token = md5($aPath . $aCategory);
     $this->initialize();
+  }
+
+  public function	getToken()
+  {
+    return $this->token;
   }
 
   public function	getCategory()

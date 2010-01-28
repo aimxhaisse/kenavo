@@ -27,4 +27,18 @@ class				Common
     exit;
   }
 
+  // Generates an URL
+
+  public static function	urlFor($action, $get = array())
+  {
+    $url = "index.php?page=" . $action;
+
+    foreach ($get as $key => $value)
+      {
+	$url .= "&$key=$value";
+      }
+
+    return $url;
+  }
+
 }

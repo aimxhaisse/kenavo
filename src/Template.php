@@ -22,6 +22,17 @@
 <?php echo $app ?></pre>
 <!-- /ASCII CONTENT -->
 
+<div id="sidebar">
+
+
+  <!-- SEARCH -->
+
+  <form id="search" name="search" action="?page=search" method="post">
+    <input id="search_input" type="text" name="pattern" />    
+  </form>
+
+</div>
+
      <pre id="footer">page generated in <?php echo microtime() - $time ?> seconds</pre>
    </div>
   </body>

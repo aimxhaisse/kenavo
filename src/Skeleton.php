@@ -7,7 +7,7 @@ require_once('src/AsciiWidgetFile.php');
 
 class			Title extends AsciiWidgetFile
 {
-  public function	__construct(AsciiBaseWidget $aParent)
+  public function	__construct(AsciiBaseWidget & $aParent)
   {
     parent::__construct($aParent);
     $this->paddings['left'] = 3;
@@ -20,7 +20,7 @@ class			Title extends AsciiWidgetFile
 
 class			Content extends AsciiWidgetText
 {
-  public function	__construct(AsciiBaseWidget $aParent)
+  public function	__construct(AsciiBaseWidget & $aParent)
   {
     parent::__construct($aParent);
 
@@ -45,7 +45,7 @@ class			Article extends AsciiVerticalWidget
 {
   private		$article;
 
-  public function	__construct(AsciiBaseWidget $aParent, Entity $aArticle)
+  public function	__construct(AsciiBaseWidget & $aParent, Entity & $aArticle)
   {
     parent::__construct($aParent);
 
@@ -79,9 +79,48 @@ class			Article extends AsciiVerticalWidget
 
 }
 
+class			TextContent extends AsciiWidgetText
+{
+  public function	__construct(AsciiBaseWidget & $aParent)
+  {
+    parent::__construct($aParent);
+
+    $this->paddings['left'] = 1;
+    $this->margins['left'] = 1;    
+  }
+}
+
+class			Item extends AsciiWidgetText
+{
+  public function	__construct(AsciiBaseWidget & $aParent)
+  {
+    parent::__construct($aParent);
+
+    $this->borders['left'] = '+';
+    $this->paddings['left'] = 1;
+    $this->margins['left'] = 1;
+  }
+}
+
+class			ItemList extends AsciiWidgetText
+{
+  public function	__construct(AsciiBaseWidget & $aParent)
+  {
+    parent::__construct($aParent);
+
+    $this->paddings['left'] = 1;
+    $this->margins['left'] = 1;    
+  }
+
+  public function	setText($aText)
+  {
+    parent::setText("--> $aText\n");
+  }
+}
+
 class			Skeleton extends AsciiVerticalWidget
 {
-  public function	__construct(AsciiBaseWidget $aParent)
+  public function	__construct(AsciiBaseWidget & $aParent)
   {
     parent::__construct($aParent);
     $aParent->registerChild($this);

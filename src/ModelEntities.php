@@ -100,6 +100,37 @@ class				Entities
     return $result;
   }
 
+  // Returns an Entity from its token
+  // If not yet serialized, look for the given token and add it into
+  // serialized page
+
+  public static function	retrieveEntity($token)
+  {
+    $existing_pages = unserialize(file_get_contents(SERIALIZED_ROUTES));
+    if (!isset($existing_pages[$token]))
+      {
+	$articles = self::retrieveGroupedEntities(ARTICLES);
+	foreach ($articles as $article)
+	  {
+	    if (!isset($existing_pages[$article->getToken()]))
+	      {
+		$existing_pages[$article->getToken()] = array('category' => $article->getCategory(),
+							      'path'	 => $article->getPath());
+
+		// We don't immediately return the matching article so as to
+		// refresh the hole articles, as we already have fetched them
+	      }
+	  }
+	file_put_contents(SERIALIZED_ROUTES, serialize($existing_pages));
+      }
+    
+    if (isset($existing_pages[$token]))
+      {
+	return new Entity($existing_pages[$token]['path'], $existing_pages[$token]['category']);
+      }
+    return false;
+  }
+  
 }
 
 function	cmpEntities($a, $b)

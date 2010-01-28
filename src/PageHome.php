@@ -4,7 +4,7 @@ require_once('src/ModelEntities.php');
 
 function	PageHome(&$skeleton)
 {
-  $articles = Entities::retrieveGroupedEntities('data/articles');
+  $articles = Entities::retrieveGroupedEntities(ARTICLES);
   
   foreach ($articles as $article)
     {
@@ -12,10 +12,5 @@ function	PageHome(&$skeleton)
       $skeleton->addWidget($ascii_article);
     }
 }
-
-if (!isset($skeleton))
-  {
-    Common::goToHell();
-  }
 
 PageHome($skeleton);

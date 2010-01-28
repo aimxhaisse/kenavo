@@ -29,6 +29,15 @@ var	blinkingFx = function () {
 
     blinkSwitcher();
 
+    // Search bar
+
+    jQuery("#search_input").attr("value", "search");
+
+    jQuery("#search_input").click(function () {
+	    $(this).attr("value", "");
+	    $(this).css("color: white;");
+	});
+
 
 }();
      
