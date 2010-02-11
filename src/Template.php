@@ -11,9 +11,7 @@
      <div id="menu">
        |
        <?php foreach ($menu_pages as $page => $link): ?>
-       <a href="index.php?page=<?php echo $link ?>">
-	 <?php echo $page ?>
-       </a>|
+       <a href="index.php?page=<?php echo $link ?>"><?php echo $page ?></a> |
        <?php endforeach ?>
      </div>
 
@@ -23,7 +21,6 @@
 <!-- /ASCII CONTENT -->
 
 <div id="sidebar">
-
 
   <!-- SEARCH -->
 

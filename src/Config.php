@@ -7,6 +7,9 @@
 // -- enable/disable debugs
 define('DEVEL', true);
 
+// -- root
+define('ROOT_URI', 'http://aimxhaisse.com/index.php');
+
 // -- admin to contact
 define('ADMIN', 'rannou.sebastien@gmail.com');
 
@@ -20,7 +23,7 @@ define('ROUTING', 'routing.ini');
 define('WIDTH', 240);
 
 // -- title of the page
-define('TITLE', "Yet Another Dev Blog :-)");
+define('TITLE', "There is no spoon...");
 
 // -- directory where to store serialized content
 define('SERIALIZED', 'data/serialized');
@@ -29,9 +32,7 @@ define('SERIALIZED', 'data/serialized');
 define('SERIALIZED_ROUTES', SERIALIZED . '/pages');
 
 // -- menu pages
-$menu_pages = array('blog'	=> 'home',
-		    'about'	=> 'about',
-		    'projects'	=> 'projects');
+$menu_pages = array('blog'	=> 'home');
 
 // ==================================================
 // INTERNALS!

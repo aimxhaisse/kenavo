@@ -83,12 +83,17 @@ img.icon
 a
 {
     color:				inherit;
-    text-decoration:			none;
+    text-decoration:			underline;
 }
 
 a:hover
 {
     color:				white;
+}
+
+#sidebar a
+{
+    text-decoration:			none;
 }
 
 .primary

@@ -70,6 +70,12 @@ class			Article extends AsciiVerticalWidget
     $this->addWidget($ascii);
   }
 
+  public function	getSumUp()
+  {
+    $result = Ascii::generateHTML($this->article->getContent());
+    return $result;
+  }
+
   private function	setContent()
   {
     $ascii = new AsciiWidgetText($this);
