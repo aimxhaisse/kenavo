@@ -7,32 +7,39 @@
     <script src="script.js"></script>
   </head>
   <body>
-   <div id="corpus">
-     <div id="menu">
-       |
-       <?php foreach ($menu_pages as $page => $link): ?>
-       <a href="index.php?page=<?php echo $link ?>"><?php echo $page ?></a> |
-       <?php endforeach ?>
-     </div>
+    <div id="corpus">
 
-<!-- ASCII CONTENT -->
-<pre id="content">
-<?php echo $app ?></pre>
-<!-- /ASCII CONTENT -->
+      <div id="menu">
+	<?php foreach ($menu_pages as $page => $link): ?>
+	<a href="index.php?page=<?php echo $link ?>"><?php echo $page ?></a>
+	<?php endforeach ?>
+      </div>
 
-<div id="sidebar">
+      <!-- ASCII CONTENT (yaw this is ugly) -->
+      <pre id="content"><?php echo $app ?></pre>
+      <!-- /ASCII CONTENT -->
 
-  <!-- SEARCH -->
+      <div id="sidebar">
 
-  <form id="search" name="search" action="?page=search" method="post">
-    <input id="search_input" type="text" name="pattern" />    
-  </form>
+	<!-- ICONS -->
+	<a href="index.php?page=rss"><img src="img/rss-32x32.png" alt="rss feed" /></a>
+	<a href="http://twitter.com/aimxhaisse"><img src="img/twitter-32x32.png" alt="twitter" /></a>
+	<a href="http://www.google.com/reader/shared/04605112158610849041"><img src="img/google-32x32.png" alt="google reader" /></a>
+	<br /><br />
+	<!-- /ICONS -->
 
-   <?php include('src/SideCategories.php'); ?>
+	<!-- SEARCH -->
+	<form id="search" name="search" action="?page=search" method="post">
+	  <input id="search_input" type="text" name="pattern" value="search" />    
+	</form>
+	<!-- /SEARCH -->
 
-</div>
+	<?php include('src/SideCategories.php'); ?>
 
-     <pre id="footer">page generated in <?php echo microtime() - $time ?> seconds</pre>
-   </div>
+      </div>
+
+      <pre id="footer">page generated in <?php echo microtime() - $time ?> seconds</pre>
+
+    </div>
   </body>
 </html>

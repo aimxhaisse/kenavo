@@ -32,7 +32,8 @@ define('SERIALIZED', 'data/serialized');
 define('SERIALIZED_ROUTES', SERIALIZED . '/pages');
 
 // -- menu pages
-$menu_pages = array('blog'	=> 'home');
+$menu_pages = array('blog'	=> 'home',
+		    'about'	=> 'about');
 
 // ==================================================
 // INTERNALS!
