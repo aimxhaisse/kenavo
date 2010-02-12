@@ -16,6 +16,9 @@ define('ADMIN', 'rannou.sebastien@gmail.com');
 // -- folder where articles are stored
 define('ARTICLES', 'data/articles');
 
+// -- file where is stored about page
+define('PAGE_ABOUT', 'data/about');
+
 // -- ini file which stores routing rules
 define('ROUTING', 'routing.ini');
 

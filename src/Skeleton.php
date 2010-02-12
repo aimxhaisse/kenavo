@@ -65,8 +65,8 @@ class			Article extends AsciiVerticalWidget
     $ascii->setText('</span>');
     $ascii->setText('by ' . $this->article->getAuthor());
     $ascii->setText(', ' . $this->article->getDate());
-    $ascii->setBorders(array('top' => '<span class="secondary">*</span>',
-			     'bottom' => '<span class="secondary">*</span>'));
+    $ascii->setBorders(array('top' => '<span class="secondary">-</span>',
+			     'bottom' => '<span class="secondary">-</span>'));
     $this->addWidget($ascii);
   }
 

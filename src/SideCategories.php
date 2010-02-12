@@ -4,7 +4,7 @@
   <?php foreach (Entities::retrieveEntities(ARTICLES . '/' . $category) as $article) : ?>
   <h3>
     <a href="<?php echo Common::urlFor('view_article', array('token' => $article->getToken())) ?>">
-   <?php echo substr($article->getTitle(), 0, 16) . "..." ?>
+   <?php echo Common::stripString($article->getTitle(), 19); ?>
     </a>
   </h3>
   <?php endforeach; ?>

@@ -68,6 +68,16 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     $this->borders = array_merge($this->borders, $array);
   }
 
+  public function		setMargins($array)
+  {
+    $this->margins = array_merge($this->margins, $array);
+  }
+
+  public function		setPaddings($array)
+  {
+    $this->paddings = array_merge($this->paddings, $array);    
+  }
+
   // Okay, this is tricky, ugly, whatever you want, but I haven't found any better solution.
   // Here is the problem: we can have html tags in content which is several lines long.
   // The content may be wrapped by borders or another AsciiWidget, so we need to find a way to
@@ -95,7 +105,7 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     $opening_tags = array();
     $all_matches = array();
 
-    if (preg_match_all("#<(\w+)(?: .+=\".+\")*>*#i", $content, $all_matches, PREG_SET_ORDER))
+    if (preg_match_all("#<(\w+)(?: \w+=\".-\"+\")*>#i", $content, $all_matches, PREG_SET_ORDER))
       {
 	foreach ($all_matches as $matches)
 	  {
