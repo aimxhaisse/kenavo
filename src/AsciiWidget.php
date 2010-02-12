@@ -105,7 +105,7 @@ abstract class			AsciiWidget extends AsciiBaseWidget
     $opening_tags = array();
     $all_matches = array();
 
-    if (preg_match_all("#<(\w+)(?: \w+=\".-\"+\")*>#i", $content, $all_matches, PREG_SET_ORDER))
+    if (preg_match_all("#<(\w+)(?: \w+=\"[^\"]+\")*>#i", $content, $all_matches, PREG_SET_ORDER))
       {
 	foreach ($all_matches as $matches)
 	  {

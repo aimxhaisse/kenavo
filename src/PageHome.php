@@ -5,12 +5,19 @@ require_once('src/ModelEntities.php');
 function	PageHome(&$skeleton)
 {
   $articles = Entities::retrieveGroupedEntities(ARTICLES);
-  
-  foreach ($articles as $article)
+  $itemlist = new ItemList($skeleton);
+
+  $ascii_article = new Article($skeleton, current($articles));
+  $skeleton->addWidget($ascii_article);
+
+  while ($article = next($articles))
     {
-      $ascii_article = new Article($skeleton, $article);
-      $skeleton->addWidget($ascii_article);
+      $item = new Item($itemlist);
+      $item->setText($article->getTitle());
+      $itemlist->addWidget($item);
     }
+
+  $skeleton->addWidget($itemlist);
 }
 
 PageHome($skeleton);

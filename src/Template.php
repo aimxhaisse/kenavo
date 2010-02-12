@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
   <head>
-    <title><?php echo TITLE ?></tile>
+    <title><?php echo TITLE ?></title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel='index' title='there is no spoon' href='http://www.aimxhaisse.com' />
 
@@ -45,9 +45,11 @@
 
 	<!-- PALS -->
 	<h2>/friends</h2>
+	<!-- 
 	<h3><a href="http://lioks.buffout.com">lioks</a></h3>
 	<h3><a href="http://gagaro.buffout.com">gagaro</a></h3>
 	<h3><a href="http://guns.buffout.com">guns</a></h3>
+	-->
 	<h3><a href="http://faltad.buffout.com">faltad</a></h3>
 	<!-- /PALS -->
 
