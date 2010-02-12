@@ -3,8 +3,15 @@
   <head>
     <title><?php echo TITLE ?></tile>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel='index' title='there is no spoon' href='http://www.aimxhaisse.com' />
+
+    <meta name="keywords" content="programming development blog ascii-art hacking" />
+    <meta name="description" content="yet another developer blog" />
+    <meta name="author" content="sebastien rannou" />
+
     <script src="jquery-1.3.2.min.js"></script>
     <script src="script.js"></script>
+
   </head>
   <body>
     <div id="corpus">
@@ -35,6 +42,14 @@
 	<!-- /SEARCH -->
 
 	<?php include('src/SideCategories.php'); ?>
+
+	<!-- PALS -->
+	<h2>/friends</h2>
+	<h3><a href="http://lioks.buffout.com">lioks</a></h3>
+	<h3><a href="http://gagaro.buffout.com">gagaro</a></h3>
+	<h3><a href="http://guns.buffout.com">guns</a></h3>
+	<h3><a href="http://faltad.buffout.com">faltad</a></h3>
+	<!-- /PALS -->
 
       </div>
 

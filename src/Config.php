@@ -8,7 +8,7 @@
 define('DEVEL', true);
 
 // -- root
-define('ROOT_URI', 'http://aimxhaisse.com/index.php');
+define('ROOT_URI', 'http://mxs.buffout.com/index.php');
 
 // -- admin to contact
 define('ADMIN', 'rannou.sebastien@gmail.com');
@@ -33,6 +33,9 @@ define('SERIALIZED', 'data/serialized');
 
 // -- contains serialized pages
 define('SERIALIZED_ROUTES', SERIALIZED . '/pages');
+
+// -- some stats
+define('STATS', SERIALIZED . '/stats');
 
 // -- menu pages
 $menu_pages = array('blog'	=> 'home',

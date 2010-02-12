@@ -6,7 +6,7 @@ function	PageAbout(&$skeleton)
 
   $content->setFile(PAGE_ABOUT);
   $content->setMargins(array('left'	=> 2,
-			     'right'	=> 2,
+			     'right'	=> 02,
 			     'top'	=> 1,
 			     'bottom'	=> 1));
   $content->setPaddings(array('top'	=> 1,

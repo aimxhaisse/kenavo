@@ -55,16 +55,31 @@ class			Article extends AsciiVerticalWidget
 
     $this->setTitle();
     $this->setContent();
+    $this->setBottom();
+  }
+
+  private function	setBottom()
+  {
+    $ascii = new AsciiWidgetText($this);
+    $text = '--- [[url=' . Common::urlFor('view_as_text', array('token' => $this->article->getToken())) . ']';
+    $text.= "[b][color=white]download as html[/color][/b][/url]]";
+    $ascii->setText($text);
+    $ascii->setMargins(array('bottom' => 1));
+    $this->addWidget($ascii);
   }
 
   private function	setTitle()
   {
     $ascii = new AsciiWidgetText($this);
-    $ascii->setText('<span class="primary">');
-    $ascii->setText($this->article->getCategory() . '/' . $this->article->getTitle() . "\n");
-    $ascii->setText('</span>');
-    $ascii->setText('by ' . $this->article->getAuthor());
-    $ascii->setText(', ' . $this->article->getDate());
+
+    $text = '<span class="primary">';
+    $text.= $this->article->getCategory() . '/';
+    $text.= '<a href="' . Common::urlFor('view_article', array('token' => $this->article->getToken())) . '">';
+    $text.= $this->article->getTitle();
+    $text.= '</a>' . "\n";
+    $text.= '</span>';
+    $text.= 'by ' . $this->article->getAuthor() . ', ' . $this->article->getDate();
+    $ascii->setText($text);
     $ascii->setBorders(array('top' => '<span class="secondary">-</span>',
 			     'bottom' => '<span class="secondary">-</span>'));
     $this->addWidget($ascii);
@@ -120,7 +135,7 @@ class			ItemList extends AsciiWidgetText
 
   public function	setText($aText)
   {
-    parent::setText("--> $aText\n");
+    parent::setText("* $aText\n");
   }
 }
 

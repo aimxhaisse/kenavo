@@ -69,7 +69,7 @@ class				Entities
 		  {
 		    $result = array_merge(self::retrieveEntities($folder . '/' . $item, $limit), $result);
 		  }
-		else if (!preg_match("/\.cache$/", $item))
+		else if (!preg_match("/\.cache$/", $item) && !preg_match('/.*~.*/', $item))
 		  {
 		    $result[$item] = new Entity($folder . '/' . $item, basename($folder));
 		  }

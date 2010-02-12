@@ -1,0 +1,19 @@
+Quite a few changes.
+
+I've decided to kick wordpress for my own blog engine because I was
+bored to write and edit articles inside a browser, I feel more at 
+ease with emacs. I also wanted something that could be read inside a
+text browser, I've been looking for a kind of ASCII renderer, without
+success, so I started to code one (it's not yet complete, I hope to have
+something cool in the next few weeks), [url=http://github.com/aimxhaisse/kenavo]sources are available here[/url].
+
+The code itself is ugly, doesn't use any database, and I don't see
+why I would need one for so little needs. One pros of not using SQL
+is that I can simply administrate it by commiting ;-)
+
+Another new thing is the server, it's far cheaper/funnier to rent one
+with friends: let's welcome [url=http://buffout.net][b]buffout[/b] and his pals[/url]: [url=http://lioks.buffout.com]lioks[/url], [url=http://guns.buffout.com]guns[/url], [url=http://faltad.buffout.com]faltad[/url],
+[url=http://gagaro.buffout.com]gagaro[/url] (and me). Anything that was online on my old server has been
+backed up, but I'm lazy and I haven't restored it yet, I'm not sure to
+put everything back online. However, the [url=http://aimxhaisse.com/old_blog/]old blog[/url] is still available
+but I'm strongly thinking to kick it one of these day.

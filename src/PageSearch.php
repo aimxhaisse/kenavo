@@ -26,7 +26,7 @@ function		PageSearch($skeleton)
 {
   global		$_POST;
 
-  if (isset($_POST['pattern']))
+  if (isset($_POST['pattern']) && strlen($_POST['pattern']))
     {
       $widget = new ItemList($skeleton);
       $pattern = $_POST['pattern'];
