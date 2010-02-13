@@ -15,6 +15,8 @@ function	PageHome(&$skeleton)
   $ascii_article = new Article($skeleton, current($articles));
   $skeleton->addWidget($ascii_article);
 
+  $count = 0;
+
   while ($article = next($articles))
     {
       $text = "[url=";
@@ -24,9 +26,13 @@ function	PageHome(&$skeleton)
       $text.= "/" . $article->getTitle() . '[/url]';
       $text.= " (" .  $article->getDate() . ")";
       $itemlist->setText($text);
+      ++$count;
     }
 
-  $skeleton->addWidget($itemlist);
+  if ($count > 0)
+    {
+      $skeleton->addWidget($itemlist);
+    }
 }
 
 PageHome($skeleton);

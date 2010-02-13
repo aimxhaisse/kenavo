@@ -130,7 +130,10 @@ class			ItemList extends AsciiWidgetText
     parent::__construct($aParent);
 
     $this->paddings['left'] = 1;
-    $this->margins['left'] = 1;    
+    $this->margins['left'] = 1;
+    $this->paddings['right'] = 1;
+    $this->margins['right'] = 1;
+    $this->margins['bottom'] = 1;
   }
 
   public function	setText($aText)
