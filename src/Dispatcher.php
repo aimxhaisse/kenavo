@@ -17,7 +17,7 @@ class				Dispatcher
 	  }
       }
 
-    return "src/Page404.php";
+    return "src/PageHome.php";
   }
 
 }

@@ -135,7 +135,7 @@ class			ItemList extends AsciiWidgetText
 
   public function	setText($aText)
   {
-    parent::setText("* $aText\n");
+    parent::setText("- $aText");
   }
 }
 

@@ -38,7 +38,7 @@ class				Common
     return $url;
   }
 
-  // Generates a string
+  // Generates a string with a prefixed ending
   public static function	stripString($str, $size, $suffix = "...")
   {
     $suffix_len = strlen($suffix);
