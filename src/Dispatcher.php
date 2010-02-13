@@ -17,7 +17,7 @@ class				Dispatcher
 	  }
       }
 
-    return "src/PageHome.php";
+    return strlen(Holder::get('page')) == 0 ? "src/PageHome.php" : "src/Page404.php";
   }
 
 }

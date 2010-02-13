@@ -17,8 +17,12 @@ function	PageHome(&$skeleton)
 
   while ($article = next($articles))
     {
-      $text = "[b]" . $article->getCategory() . "[/b]";
-      $text.= "/" . $article->getTitle();
+      $text = "[url=";
+      $text.= Common::urlFor('view_article',
+			     array('token' => $article->getToken())) . ']';
+      $text.= "[b]" . $article->getCategory() . "[/b]";
+      $text.= "/" . $article->getTitle() . '[/url]';
+      $text.= " (" .  $article->getDate() . ")";
       $itemlist->setText($text);
     }
 
