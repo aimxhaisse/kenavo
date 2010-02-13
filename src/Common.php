@@ -32,7 +32,7 @@ class				Common
 
     foreach ($get as $key => $value)
       {
-	$url .= "&$key=$value";
+	$url .= "&amp;" . urlencode($key) . "=" . urlencode($value);
       }
 
     return $url;

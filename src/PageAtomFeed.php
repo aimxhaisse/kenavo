@@ -16,7 +16,9 @@ require_once('src/ModelEntities.php');
   <?php foreach (Entities::retrieveGroupedEntities(ARTICLES) as $article) : ?>
   <entry>
     <title><?php echo $article->getTitle() ?></title>
-    <link href="<?php echo ROOT_URI ?>"/>
+    <link href="<?php echo ROOT_URI .
+		Common::urlFor('view_article',
+		array('token' => $article->getToken())) ?>"/>
     <updated><?php echo date(DATE_ATOM, $article->getTimestamp()); ?></updated>
     <summary type="xhtml"><?php echo substr(Ascii::generateHTML($article->getContent()), 0, 512); ?>...</summary>
   </entry>

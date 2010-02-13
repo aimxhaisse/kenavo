@@ -8,7 +8,7 @@
 define('DEVEL', true);
 
 // -- root
-define('ROOT_URI', 'http://mxs.buffout.com/index.php');
+define('ROOT_URI', 'http://mxs.buffout.com/');
 
 // -- admin to contact
 define('ADMIN', 'rannou.sebastien@gmail.com');
