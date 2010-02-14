@@ -17,10 +17,6 @@ class Stat
   // Save the database to the Stat file
   private static function	saveDb($db)
   {
-    if (file_exists(STATS))
-      {
-	unlink(STATS);
-      }
     file_put_contents(STATS, serialize($db));
   }
 
