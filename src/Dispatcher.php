@@ -2,7 +2,6 @@
 
 class				Dispatcher
 {
-
   // Includes the appropriated controller according to the request
 
   public static function	dispatch()
@@ -17,7 +16,13 @@ class				Dispatcher
 	  }
       }
 
-    return strlen(Holder::get('page')) == 0 ? "src/PageHome.php" : "src/Page404.php";
+    // Ugly, fuck off
+    if (Holder::get('feed') !== false)
+      {
+	return 'src/PageAtomFeed.php';
+      }
+
+    return Holder::get('page') === false ? "src/PageHome.php" : "src/Page404.php";
   }
 
 }
