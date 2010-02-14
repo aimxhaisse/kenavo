@@ -5,7 +5,7 @@ class Stat
   // Very simple logger, to be upgraded...
 
   // Loads the database from the Stat file
-  private static function	loadDb()
+  public static function	loadDb()
   {
     if (!file_exists(STATS))
       {
