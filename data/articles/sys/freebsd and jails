@@ -37,7 +37,7 @@ kern_securelevel="3"
 [color=grey]root# [/color]
 [/code]
 Last thing to do is registering the jail in the host by adding some
-settings in rc.conf (the one of the host this time):
+settings to rc.conf (the one of the host this time):
 
 [code][color=grey]root# [/color]tail -n 11 /etc/rc.conf
 # jail stuff
@@ -125,12 +125,12 @@ rdr re0 94.23.241.199/32 port 11001 -> 192.168.1.21 port 11001
 rdr re0 94.23.241.199/32 port 11002 -> 192.168.1.21 port 11002
 rdr re0 94.23.241.199/32 port 11003 -> 192.168.1.21 port 11003
 rdr re0 94.23.241.199/32 port 11004 -> 192.168.1.21 port 11004
-[color=grey][mxs@buffout:~/]%[/color]cat /etc/rc.conf | grep ipnat
+[color=grey][mxs@buffout:~/]%[/color] cat /etc/rc.conf | grep ipnat
 ipnat_enable="YES"
 ipnat_rules="/etc/filters/ipnat.rules"
 [color=grey][mxs@buffout:~/]%[/color]
 [/code]
-We can reboot once again, and now, FTP is accessible from the outside :)
+We can reboot once again, FTP is now accessible from the outside :)
 
 [color=lightgreen][b]0x04. Rights and user managment[/b][/color]
 
@@ -145,11 +145,10 @@ are not installed in the jail, so you need to install it for each jail.
 That's ugly.
 
 Another solution is to create them a user on the jail (disabling 
-authentication), with the same UID as on the host, and use links to
-provide direct access on the jail.
+authentication), with the same UID as the one on the host, and use 
+links to provide direct access on the jail.
 
 [code][color=grey][mxs@buffout:~/]%[/color] cd
 [color=grey][mxs@buffout:~/]%[/color] ln -sf /jails/www/usr/local/www/mxs www
 [color=grey][mxs@buffout:~/]%[/color] cd www && do stuff
 [/code]
-I hope this article helped you.
