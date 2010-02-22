@@ -19,14 +19,20 @@ function	PageHome(&$skeleton)
 
   while ($article = next($articles))
     {
-      $text = "[url=";
+      ++$count;
+
+      $text = "";
+      $text.= "[url=";
       $text.= Common::urlFor('view_article',
 			     array('token' => $article->getToken())) . ']';
       $text.= "[b]" . $article->getCategory() . "[/b]";
       $text.= "/" . $article->getTitle() . '[/url]';
       $text.= " (" .  $article->getDate() . ")";
+      if ($count < count($articles) - 1)
+	{
+	  $text.= "\n";
+	}
       $itemlist->setText($text);
-      ++$count;
     }
 
   if ($count > 0)
