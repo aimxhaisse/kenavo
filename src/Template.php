@@ -46,12 +46,12 @@
 	<!-- PALS -->
 	<h2>/links</h2>
 	<!-- 
-	<h3><a href="http://lioks.buffout.com">lioks</a></h3>
 	<h3><a href="http://gagaro.buffout.com">gagaro</a></h3>
 	<h3><a href="http://guns.buffout.com">guns</a></h3>
 	-->
 	<h3><a href="http://aimxhaisse.com/old_blog/">old blog</a></h3>
 	<h3><a href="http://faltad.buffout.com">faltad</a></h3>
+	<h3><a href="http://lioks.buffout.com/">lioks</a></h3>
 	<!-- /PALS -->
 
       </div>
